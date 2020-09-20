@@ -1,0 +1,35 @@
+.clearfix {
+    &::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+}
+
+.section-padding {
+    padding: pix-to-rem(80px) 0;
+}
+
+.full-cover {
+    @include square(100%);
+}
+
+
+.basic-input {
+    border: none;
+    outline: none;
+}
+
+.remove-default-list-style {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.gatsby-image-full {
+    @include gatsby-image-full();
+}
+
+.dollar-sign {
+    font-size: .7em;
+}

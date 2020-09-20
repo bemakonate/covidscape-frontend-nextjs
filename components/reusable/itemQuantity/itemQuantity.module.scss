@@ -1,0 +1,38 @@
+@import '../../../styles/defaultImports.scss';
+
+.ItemQuantity {
+    @include flex($align:center);
+}
+
+.ChangeBtn {
+    @include rounded(20px);
+    @extend .basic-input;
+    @include flex($center:true);
+    padding-bottom: 2px;
+    font-weight: 300;
+}
+
+.ItemNum {
+    @extend .basic-input;
+    background: transparent;
+    width: 40px;
+    padding: 5px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.Expand {
+    justify-content: center;
+    margin-bottom: 20px;
+
+    .ChangeBtn {
+        @include rounded(32px);
+        font-size: 25px;
+    }
+
+    .ItemNum {
+        width: 50px;
+        font-size: 30px;
+    }
+}

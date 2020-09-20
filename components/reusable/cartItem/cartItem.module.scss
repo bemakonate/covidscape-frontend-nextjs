@@ -1,0 +1,92 @@
+@import '../../../styles/defaultImports.scss';
+
+.CartItem {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 10px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+
+.Title {
+    font-weight: 400;
+}
+
+.Price {
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+
+.RemoveBtn {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    z-index: 3;
+    font-size: 25px;
+}
+
+.ItemOverlay {
+    @include position($p:absolute, $top:0, $left:0, $zIndex:2);
+    @include square(100%);
+    background: rgba(white, .4);
+}
+
+.FixedPrice,
+.FixedQuantity {
+    margin: 0;
+    font-weight: 300;
+}
+
+.FixedQuantity {
+    font-size: 20px;
+}
+
+.Expand {
+    grid-template-columns: 1fr 4fr;
+
+    .RemoveBtn {
+        font-size: 30px;
+        top: -15px;
+        left: -15px;
+    }
+
+    .Title {
+        font-size: 20px;
+    }
+
+    .Price {
+        font-size: 20px;
+    }
+
+    .ItemContent {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-gap: 10px;
+    }
+
+
+}
+
+@include mq('med') {
+
+    .item__content {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .Price {
+        font-size: 20px;
+    }
+
+    .Expand {
+        grid-template-columns: 1fr 9fr;
+    }
+}
+
+@include mq('large') {
+    .Expand {
+        grid-template-columns: 1fr 5fr;
+    }
+}
