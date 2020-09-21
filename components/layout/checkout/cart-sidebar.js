@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MdClose } from 'react-icons/md';
-import { Link } from 'gatsby';
+import Link from 'next/link';
 import CartItem from '../../reusable/cartItem';
 import Backdrop from '../../basic/Backdrop/Backdrop';
 import Dollar from '../../reusable/dollar';
@@ -49,7 +49,7 @@ const CartSidebar = (props) => {
                     <p className="subtotal-label">Subtotal</p>
                     <p className="subtotal-price"><Dollar num={props.cartTotalPrice} /></p>
                 </div>
-                <Link to="/cart" className="cart-sidebar__cart-link" onClick={props.closeCartSidebar}>View Cart</Link>
+                <Link href="/cart"><a className="cart-sidebar__cart-link" onClick={props.closeCartSidebar}>View Cart</a></Link>
             </React.Fragment>
         )
     } else {

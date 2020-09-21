@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import Link from 'next/link';
+
 
 
 const data = [
@@ -21,7 +22,7 @@ const navLinks = (props) => {
         <ul className={props.styleClass}>
             {data.map((item, index) => {
                 return <li onClick={props.click} key={`navLink-${index}`}>
-                    <Link to={item.link} className={props.navLinkClass}>{item.label}</Link>
+                    <Link href={item.link} ><a className={props.navLinkClass}>{item.label}</a></Link>
                 </li>
             })}
         </ul>

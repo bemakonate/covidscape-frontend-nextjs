@@ -1,13 +1,23 @@
 import { useMemo } from 'react'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk';
 
+
+import cartReducer from './cart/reducer';
+import layoutReducer from './layout/reducer';
+
+const rootReducer = combineReducers({
+    cart: cartReducer,
+    layout: layoutReducer,
+})
+
+
 let store;
 
-function initStore(reducer, preloadedState) {
+function initStore(preloadedState) {
     return createStore(
-        reducer,
+        rootReducer,
         preloadedState,
         composeWithDevTools(applyMiddleware(thunk))
     )

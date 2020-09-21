@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { IoIosCloseCircleOutline } from 'react-icons/io';
-import { Link } from 'gatsby';
+import Link from 'next/link';
 import AspectRatio from '../../basic/aspectRatio/aspectRatio';
-import GatsbyImageFull from '../../basic/GatsbyImageFull/GatsbyImageFull';
 import ItemQuantity from '../itemQuantity';
 import { formatNumber } from '../../../constants/helpers';
 import classes from './cartItem.module.scss';
@@ -27,16 +26,16 @@ const CartItem = ({ quantity = 1, price, image, title, id, slug, ...props }) => 
         <div className={`${classes.CartItem} ${props.expand ? classes.Expand : ''}`}>
 
             {!props.fixed ? <div className={classes.RemoveBtn} onClick={() => props.removeItem(id)}><IoIosCloseCircleOutline /></div> : null}
-            <Link to={!props.fixed ? slug : '#'}>
+            <Link href={!props.fixed ? slug : '#'}>
                 <AspectRatio height="100%" styleClass={props.imageWrapperClass ? props.imageWrapperClass : ''}>
-                    <GatsbyImageFull image={image} />
+                    {/* <GatsbyImageFull image={image} /> */}
                     <div className={classes.ItemOverlay}></div>
                 </AspectRatio>
             </Link>
 
             <div className={classes.ItemContent}>
                 <div>
-                    <Link to="#" className={classes.Title}>{title || 'Product Title'}</Link>
+                    <Link href="#" ><a className={classes.Title}>{title || 'Product Title'}</a></Link>
                     {!props.fixed ? <ItemQuantity num={quantity} getQuantity={setItemQuantity} /> : null}
                     {props.fixed ? (
                         <React.Fragment>

@@ -1,5 +1,4 @@
 import React from 'react'
-import GatsbyImage from 'gatsby-image';
 import AspectRatio from '../../basic/aspectRatio/aspectRatio';
 import classes from './productCard.module.scss';
 import { truncate } from '../../../constants/helpers';
@@ -7,7 +6,7 @@ import { RiShoppingCart2Line } from 'react-icons/ri';
 import Dollar from '../dollar'
 import { FiInfo } from 'react-icons/fi';
 import { BsHeart } from 'react-icons/bs';
-import { Link } from 'gatsby';
+import Link from 'next/link';
 import { Image } from 'cloudinary-react';
 
 const productCard = ({ image, type = 'product', ...props }) => {
@@ -36,7 +35,7 @@ const productCard = ({ image, type = 'product', ...props }) => {
         default:
             productBtns = (
                 <div className={classes.ProductBtns}>
-                    <button className={classes.ProductBtn}><Link to={props.link}><FiInfo /></Link></button>
+                    <button className={classes.ProductBtn}><Link href={props.link}><FiInfo /></Link></button>
                     <button className={classes.ProductBtn} onClick={props.cartBtnClicked}><RiShoppingCart2Line /></button>
                     <button className={classes.ProductBtn}><BsHeart /></button>
                 </div >
@@ -56,15 +55,18 @@ const productCard = ({ image, type = 'product', ...props }) => {
     return (
         <div className={productClasses} >
             <AspectRatio height="133%" styleClass={props.imgContainerStyle}>
-                <Link to={props.link} className={classes.ProductImgLink}>
-                    {/* <img src={image.formats.medium.url} className={imgClasses} /> */}
-                    <Image cloudName="dqhul90vx" publicId={image.formats.medium.provider_metadata.public_id} className={imgClasses} format="webp" />
-                    <div className={`${classes.ProductOverlay} ${props.overlayStyle ? props.overlayStyle : null}`}></div>
+                <Link href={props.link}>
+                    <a className={classes.ProductImgLink}>
+                        {/* <img src={image.formats.medium.url} className={imgClasses} /> */}
+                        <Image cloudName="dqhul90vx" publicId={image.formats.medium.provider_metadata.public_id} className={imgClasses} format="webp" />
+                        <div className={`${classes.ProductOverlay} ${props.overlayStyle ? props.overlayStyle : null}`}></div>
+                    </a>
                 </Link>
+
                 {productBtns}
             </AspectRatio>
 
-            <Link to={props.link}>{cardInfo}</Link>
+            <Link href={props.link}>{cardInfo}</Link>
         </div>
     )
 }

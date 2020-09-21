@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import classes from './Backdrop.module.scss';
-import '../../../styles/5-state/_5-state.scss';
 
 const Backdrop = (props) => {
     let backdropClasses = [classes.Backdrop, props.styles, "js-hide"];

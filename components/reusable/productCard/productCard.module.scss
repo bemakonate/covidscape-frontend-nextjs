@@ -4,6 +4,7 @@ $product-btn-brdr: 1px solid rgb(231, 231, 231);
 
 .Product {
     width: 100%;
+    position: relative;
 }
 
 .ProductImgLink {
@@ -14,7 +15,7 @@ $product-btn-brdr: 1px solid rgb(231, 231, 231);
 .ProductImg {
     position: relative;
     z-index: -2;
-    @include gatsby-image-full($directParent: true);
+    display: block;
     @include square(100%);
 }
 

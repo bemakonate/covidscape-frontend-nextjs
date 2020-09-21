@@ -79,9 +79,9 @@ export default Page;
 //                     <div className="shop__jumbotron-content">
 //                         <div className="container">
 //                             <div className="jumbo__sub-content">
-//                                 <Link to="/products" className="jumbo__back-arrow"><BsArrowLeft /></Link>
+//                                 <Link href="/products" className="jumbo__back-arrow"><BsArrowLeft /></Link>
 //                                 <p className="shop__breadcrumb-list">
-//                                     <Link to="/">Home</Link> / <Link to="/categories">Categories</Link> / {category.name}
+//                                     <Link href="/">Home</Link> / <Link href="/categories">Categories</Link> / {category.name}
 //                                 </p>
 //                                 <h1 className="shop__jumbotron-title">{category.name}</h1>
 //                             </div>

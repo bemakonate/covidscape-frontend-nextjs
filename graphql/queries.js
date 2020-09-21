@@ -6,11 +6,11 @@ query {
       title
       image{
         provider_metadata
+        formats
       }	
       slug
       price
     }
-    
   }
   
 `;
