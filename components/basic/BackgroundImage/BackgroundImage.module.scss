@@ -1,0 +1,11 @@
+@import '../../../styles/defaultImports.scss';
+
+.BgImageComp {
+    @include square(100%);
+    position: relative;
+}
+
+.BgImage {
+    @include square(100%);
+    @include position($p:absolute, $left:0, $top:0, $zIndex: -3);
+}

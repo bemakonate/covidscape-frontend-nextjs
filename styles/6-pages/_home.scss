@@ -3,7 +3,7 @@
         height: 60vh;
         padding-top: 50px;
         @include flex($align:center, $just:flex-start);
-        background-color: rgba(white, 0.7);
+        background-color: rgba(white, .7);
         color: black;
     }
 
