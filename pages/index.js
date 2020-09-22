@@ -8,6 +8,7 @@ import { BusinessMsg, Categories, Contact, Hero, Products } from '../components/
 
 
 const index = () => {
+  console.log('process.env.CMS_API_URL', process.env.CMS_API_URL)
   const { data, loading, error } = useQuery(PRODUCTS_AND_CATEGORIES_QUERY);
 
   if (loading) return <p>Loading...</p>;
