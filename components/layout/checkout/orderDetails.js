@@ -13,7 +13,7 @@ const orderDetails = ({ cartItems }) => {
                             imageWrapperClass="checkout__order-img"
                             key={item.details.id}
                             id={item.details.id}
-                            image={item.details.image.childImageSharp.fluid}
+                            image={item.details.image.formats.thumbnail.url}
                             price={item.details.price}
                             title={item.details.title}
                             quantity={item.quantity} />)}

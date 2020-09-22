@@ -29,6 +29,7 @@ const CartItem = ({ quantity = 1, price, image, title, id, slug, ...props }) => 
             <Link href={!props.fixed ? slug : '#'}>
                 <AspectRatio height="100%" styleClass={props.imageWrapperClass ? props.imageWrapperClass : ''}>
                     {/* <GatsbyImageFull image={image} /> */}
+                    <img src={image} className="full-cover" />
                     <div className={classes.ItemOverlay}></div>
                 </AspectRatio>
             </Link>

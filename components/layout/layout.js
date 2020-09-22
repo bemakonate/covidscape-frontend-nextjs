@@ -31,13 +31,13 @@ const Layout = ({ children, addPadding = false, ...props }) => {
                 isSidebarOpen={isSidebarOpen}
                 closeSidebar={closeSidebar} />
 
-            {/* <CartSidebar
+            <CartSidebar
                 isCartSidebarOpen={isCartSidebarOpen}
                 closeCartSidebar={onCloseCartSidebar}
                 cartItems={cartItems}
                 changeItemQuantity={onChangeItemQuantity}
                 removeItem={onRemoveItem}
-                cartTotalPrice={cartTotalPrice} /> */}
+                cartTotalPrice={cartTotalPrice} />
 
             <div className="site-content">
                 {children}
