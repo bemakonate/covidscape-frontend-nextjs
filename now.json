@@ -1,0 +1,14 @@
+{
+    "name": "now-env-vars",
+    "version": 2,
+    "builds": [
+        {
+            "src": "package.json",
+            "use": "@now/next"
+        }
+    ],
+    "env": {
+        "DEMO_KEY": "@demo-key",
+        "DEMO_SECRET": "@demo-secret"
+    }
+}
