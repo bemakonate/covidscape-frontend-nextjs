@@ -1,6 +1,6 @@
 import React from 'react'
-import "mapbox-gl/dist/mapbox-gl.css";
-import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
+// import "mapbox-gl/dist/mapbox-gl.css";
+// import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import MapGL, { NavigationControl, GeolocateControl } from "react-map-gl";
 import Geocoder from "react-map-gl-geocoder";
 import classes from './Geocoding.module.scss';
