@@ -11,7 +11,7 @@ const Categories = (props) => {
                         return <StyledProductCard
                             key={category.id}
                             type="category"
-                            link={`/categories/${category.slug}`}
+                            link={`/categories/${category.id}`}
                             title={category.name}
                             items={itemsSet.size}
                             image={category.image} />
