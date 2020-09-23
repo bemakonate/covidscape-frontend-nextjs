@@ -49,7 +49,7 @@ const Checkout = (props) => {
 
     useEffect(() => {
         if (!cartItems.length) {
-            router.push('/cart');
+            router.push({ pathname: '/cart', scrollreset: true })
         }
 
     }, [])
@@ -80,7 +80,7 @@ const Checkout = (props) => {
             onAddOrderData(orderData)
             onAddOrderCart(cartItems)
             props.onClearCart();
-            router.push('/confirmation');
+            router.push('/confirmation').then(() => window.scrollTo(0, 0));
         }
     }, [isPaymentSuccessful])
 

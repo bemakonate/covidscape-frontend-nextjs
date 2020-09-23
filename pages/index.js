@@ -4,12 +4,12 @@ import { withApollo } from '../graphql/apollo';
 import { PRODUCTS_AND_CATEGORIES_QUERY } from '../graphql/queries';
 import Layout from '../components/layout/layout';
 import { BusinessMsg, Categories, Contact, Hero, Products } from '../components/layout/home';
+import getConfig from 'next/config'
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 
 
-const index = () => {
-  console.log('process.env.NODE_ENV', process.env.NODE_ENV)
-  console.log('process.env.CMS_API_URL', process.env.CMS_API_URL)
+const Index = () => {
   const { data, loading, error } = useQuery(PRODUCTS_AND_CATEGORIES_QUERY);
 
   if (loading) return <p>Loading...</p>;
@@ -27,4 +27,5 @@ const index = () => {
   )
 }
 
-export default withApollo(index);
+
+export default withApollo(Index);
