@@ -58,7 +58,7 @@ const productCard = ({ image, type = 'product', ...props }) => {
                 <Link href={props.link}>
                     <a className={classes.ProductImgLink}>
                         {/* <img src={image.formats.medium.url} className={imgClasses} /> */}
-                        <Image cloudName="dqhul90vx" publicId={image.formats.small.provider_metadata.public_id} className={imgClasses} format="webp" />
+                        <Image cloudName="dqhul90vx" publicId={image.formats.small.provider_metadata.public_id} className={imgClasses} format="webp" secure="true" />
                         <div className={`${classes.ProductOverlay} ${props.overlayStyle ? props.overlayStyle : null}`}></div>
                     </a>
                 </Link>

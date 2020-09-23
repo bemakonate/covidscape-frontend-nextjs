@@ -5,8 +5,6 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import fetch from 'isomorphic-unfetch';
-import getConfig from 'next/config'
-const { publicRuntimeConfig } = getConfig();
 
 let apolloClient = null;
 
@@ -119,7 +117,7 @@ function createApolloClient(initialState = {}) {
     return new ApolloClient({
         ssrMode: typeof window === 'undefined',
         link: new HttpLink({
-            uri: publicRuntimeConfig.cms_graphql_url || 'yoo mamma', //testing purposes
+            uri: process.env.CMS_GRAPHQL_URL || 'yo mamma',
             credentials: 'same-origin',
             fetch
         }),
