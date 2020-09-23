@@ -4,8 +4,7 @@ import { withApollo } from '../graphql/apollo';
 import { PRODUCTS_AND_CATEGORIES_QUERY } from '../graphql/queries';
 import Layout from '../components/layout/layout';
 import { BusinessMsg, Categories, Contact, Hero, Products } from '../components/layout/home';
-import getConfig from 'next/config'
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
+c
 
 
 
