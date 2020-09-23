@@ -119,7 +119,7 @@ function createApolloClient(initialState = {}) {
     return new ApolloClient({
         ssrMode: typeof window === 'undefined',
         link: new HttpLink({
-            uri: publicRuntimeConfig.cms_graphql_url || 'http://localhost:1337',
+            uri: publicRuntimeConfig.cms_graphql_url || 'yoo mamma', //testing purposes
             credentials: 'same-origin',
             fetch
         }),

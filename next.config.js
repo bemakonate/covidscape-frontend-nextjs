@@ -5,6 +5,6 @@ module.exports = {
     // },
     publicRuntimeConfig: {
         cms_api_url: process.env.CMS_API_URL,
-        cms_graphql_url: process.env.CMS_GRAHPHQL_URL,
+        cms_graphql_url: process.env.CMS_GRAPHQL_URL,
     },
 }
