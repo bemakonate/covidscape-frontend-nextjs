@@ -14,7 +14,7 @@ const data = [
     },
     {
         label: 'Blog',
-        link: '#'
+        link: '/'
     }
 ]
 const navLinks = (props) => {

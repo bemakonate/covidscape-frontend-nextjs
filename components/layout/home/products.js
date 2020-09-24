@@ -9,7 +9,8 @@ const Products = (props) => {
                         return <StyledProductCard
                             key={`product-${index}`}
                             type="product"
-                            link={`/products/${product.id}`}
+                            as={`/products/${product.id}`}
+                            link='/products/[id]'
                             title={product.title}
                             price={product.price}
                             product={product}

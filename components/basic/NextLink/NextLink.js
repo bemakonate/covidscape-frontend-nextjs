@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-const NextLink = (props) => {
+const NextLink = ({ className, children, ...props }) => {
     return (
-        <Link href={props.href} as={props.as}><a className={props.className}>{props.children}</a></Link>
+        <Link {...props}><a className={className}>{children}</a></Link>
     )
 }
 
