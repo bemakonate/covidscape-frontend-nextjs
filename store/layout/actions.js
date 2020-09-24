@@ -16,19 +16,3 @@ export const closeFlashMessage = () => {
         type: actionTypes.CLOSE_FLASH_MESSAGE,
     }
 }
-
-export const setProductsGlobalState = ({ products }) => {
-    return {
-        type: actionTypes.SET_PRODUCTS_GLOBAL_STATE,
-        payload: {
-            products
-        }
-    }
-}
-
-export const setCategoriesGlobalState = ({ categories }) => {
-    return {
-        type: actionTypes.SET_CATEGORIES_GLOBAL_STATE,
-        payload: { categories }
-    }
-}

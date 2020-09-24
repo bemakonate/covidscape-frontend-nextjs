@@ -35,7 +35,7 @@ const productCard = ({ image, type = 'product', ...props }) => {
         default:
             productBtns = (
                 <div className={classes.ProductBtns}>
-                    <button className={classes.ProductBtn}><Link href={props.link}><FiInfo /></Link></button>
+                    <button className={classes.ProductBtn}><Link href={props.link} as={props.as}><FiInfo /></Link></button>
                     <button className={classes.ProductBtn} onClick={props.cartBtnClicked}><RiShoppingCart2Line /></button>
                     <button className={classes.ProductBtn}><BsHeart /></button>
                 </div >
@@ -55,7 +55,7 @@ const productCard = ({ image, type = 'product', ...props }) => {
     return (
         <div className={productClasses} >
             <AspectRatio height="133%" styleClass={props.imgContainerStyle}>
-                <Link href={props.link}>
+                <Link href={props.link} as={props.as}>
                     <a className={classes.ProductImgLink}>
                         {/* <img src={image.formats.medium.url} className={imgClasses} /> */}
                         <Image cloudName="dqhul90vx" publicId={image.formats.small.provider_metadata.public_id} className={imgClasses} format="webp" secure="true" />

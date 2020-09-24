@@ -1,98 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { graphql, useStaticQuery } from "gatsby";
 import * as  cartActions from '../../store/cart/actions';
-import * as layoutActions from '../../store/layout/actions';
 
+import { useQuery } from '@apollo/react-hooks';
+import { withApollo } from '../../graphql/apollo';
+import { PRODUCTS_AND_CATEGORIES_QUERY } from '../../graphql/queries';
 
-import { useQuery } from 'react-apollo';
-import gql from 'graphql-tag';
-
-const query = gql`
-{
-    products {
-        id
-        description
-        price
-        slug
-        title
-        image {
-            formats
-            provider_metadata
-        }
-    }
-
-    categories{
-      id
-      name
-      slug
-      products{
-        id
-      }
-      image{
-        formats
-        provider_metadata
-      }
-    }
-}
-`;
 
 
 const RootElmt = (props) => {
-  // const { onGetUserCart, onSetProductsGlobalState, onSetCategoriesGlobalState } = props;
-  // const [fetchedProducts, setFetechedProducts] = useState(null);
-  // const [fetchedCategories, setFetchedCategories] = useState(null);
-  // const { loading: qLoading, error: qError, data: qData } = useQuery(query);
-  // let pagesJSX = <p>Loading...</p>;
 
-  // useEffect(() => console.log('App loaded'), [])
+  const { onGetUserCart } = props;
+  const { data, loading, error } = useQuery(PRODUCTS_AND_CATEGORIES_QUERY);
 
-  // useEffect(() => {
-  //   if (!qLoading) {
-  //     if (qError) {
-  //       //show there was an error getting products
-  //     } else {
-  //       setFetechedProducts(qData.products);
-  //       setFetchedCategories(qData.categories);
-  //     }
-  //   }
-  // }, [qLoading])
+  useEffect(() => console.log('App loaded'), [])
 
-
-  // useEffect(() => {
-  //   if (fetchedProducts && !qLoading) {
-  //     onSetProductsGlobalState({ products: fetchedProducts });
-  //     // onGetUserCart(newProducts)
-  //   }
-  // }, [fetchedProducts, qLoading]);
-
-
-  // useEffect(() => {
-  //   if (fetchedCategories && !qLoading) {
-  //     onSetCategoriesGlobalState({ categories: fetchedCategories });
-  //   }
-  // }, [fetchedCategories, qLoading])
+  useEffect(() => {
+    if (!loading && data) {
+      if (error) {
+        //show there was an error getting products
+      } else {
+        onGetUserCart(data.products);
+      }
+    }
+  }, [loading]);
 
 
 
-  // if (fetchedProducts && fetchedCategories) {
-  //   pagesJSX = props.children
-  // }
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
-  return (
-    <React.Fragment>
-      {props.children}
-    </React.Fragment>
-  )
+
+  return props.children;
 };
 
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSetProductsGlobalState: ({ products }) => dispatch(layoutActions.setProductsGlobalState({ products })),
-    onSetCategoriesGlobalState: ({ categories }) => dispatch(layoutActions.setCategoriesGlobalState({ categories })),
     onGetUserCart: (products) => dispatch(cartActions.getUserCart(products)),
   }
 }
 
-export default connect(null, mapDispatchToProps)(RootElmt);
+export default withApollo(connect(null, mapDispatchToProps)(RootElmt));

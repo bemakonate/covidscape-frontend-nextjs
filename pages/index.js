@@ -25,4 +25,4 @@ const Index = () => {
 }
 
 
-export default withApollo(Index);
+export default Index;
