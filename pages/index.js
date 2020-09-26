@@ -6,12 +6,16 @@ import Layout from '../components/layout/layout';
 import { BusinessMsg, Categories, Contact, Hero, Products } from '../components/layout/home';
 
 
-const Index = () => {
-  const { data, loading, error } = useQuery(HOME_PAGE_QUERY);
+
+const Index = ({ data, error }) => {
+  // const { data, loading, error } = useQuery(HOME_PAGE_QUERY);
 
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  // if (!loding) return <p>Loading...</p>;
+  // if (error) return <p>Error: {error.message}</p>
+
+
+
 
   return (
     <Layout>
@@ -23,8 +27,26 @@ const Index = () => {
         <Contact />
       </div>
     </Layout>
+
   )
 }
 
+
+
+Index.getInitialProps = async ctx => {
+  const client = ctx.apolloClient;
+  try {
+    const res = await client.query({ query: HOME_PAGE_QUERY });
+    const data = res.data;
+
+    return { data }
+  } catch (err) {
+
+    return { error: { message: err.message } }
+  }
+
+
+
+};
 
 export default withApollo(Index);

@@ -12,7 +12,7 @@ const Cart = (props) => {
     let cartJSX = null;
 
     if (!isFetchingUserCart) {
-        return <p>Loading your cart</p>
+        cartJSX = <p>Loading your cart</p>
     }
     else if (cartItems.length > 0) {
         cartJSX = (
