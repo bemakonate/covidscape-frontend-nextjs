@@ -1,13 +1,16 @@
 import React from 'react'
 import NavLinks from './navLinks';
 import Link from 'next/link';
+import { connect } from 'react-redux';
 
 //Icons
 import { HiOutlineMenuAlt2 } from 'react-icons/hi';
 import { GrSearch } from 'react-icons/gr';
 import { RiSurgicalMaskLine } from 'react-icons/ri';
+import { BiDotsHorizontalRounded } from 'react-icons/bi';
 
 const navigation = (props) => {
+    const { isUserCartLoaded } = props;
     const currentPath = typeof window !== 'undefined' && window.location.pathname;
     const ifToOpenCartSidebar = (currentPath !== '/cart') || (currentPath !== '/checkout') ? props.openCartSidebar : null;
 
@@ -28,7 +31,7 @@ const navigation = (props) => {
                 <div className="nav__cart" onClick={ifToOpenCartSidebar}>
                     <span>Cart</span>
                     <div className="nav__cart-num">
-                        <span>{props.cartTotalItems}</span>
+                        <span>{isUserCartLoaded ? props.cartTotalItems : <BiDotsHorizontalRounded />}</span>
                     </div>
                 </div>
             </div>
@@ -37,4 +40,10 @@ const navigation = (props) => {
     )
 }
 
-export default navigation
+const mapStateToProps = state => {
+    return {
+        isUserCartLoaded: state.cart.loadedCart
+    }
+}
+
+export default connect(mapStateToProps)(navigation)

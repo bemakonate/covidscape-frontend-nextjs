@@ -5,8 +5,7 @@ import MapGL, { NavigationControl, GeolocateControl } from "react-map-gl";
 import Geocoder from "react-map-gl-geocoder";
 import classes from './Geocoding.module.scss';
 
-const MAPBOX_TOKEN =
-    "pk.eyJ1IjoiYmVtYWtvbmF0ZSIsImEiOiJja2V4MmZuMmcwMDBrMnhxeWNpM3k5aDdxIn0.QyKjIu8wOjPuhc8vf_CzmQ";
+const MAPBOX_TOKEN = process.env.MAPBOX_TOKEN;
 
 class App extends React.Component {
     state = {
