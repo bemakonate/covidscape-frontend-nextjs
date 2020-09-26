@@ -97,3 +97,38 @@ query {
 }
   
 `;
+
+
+export const HOME_PAGE_QUERY = gql`
+query {
+    products {
+      id
+      title
+      image{
+        formats
+      }	
+      slug
+      price
+    }
+
+    categories{
+      id
+      name
+      slug
+      products{
+        id
+      }
+      image{
+        formats
+      }
+    }
+
+    homePage {
+      BannerImage {
+        formats
+      }
+    }
+      
+}
+  
+`;

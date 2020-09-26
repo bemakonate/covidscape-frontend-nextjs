@@ -104,6 +104,9 @@ export const getUserCart = (newProductsData) => {
 
             await dispatch(getUserCartDispatch(newCart));
             updateItemsAndPrice(dispatch, getState().cart.cart);
+        } else {
+            dispatch(getUserCartDispatch(newCart));
+            updateItemsAndPrice(dispatch, getState().cart.cart);
         }
 
     }

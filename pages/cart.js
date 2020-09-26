@@ -8,10 +8,13 @@ import Dollar from '../components/reusable/dollar';
 import { cartSubtotal } from '../constants/helpers/cart-helpers';
 
 const Cart = (props) => {
-    const { cartItems, onChangeItemQuantity, onRemoveItem } = props;
+    const { cartItems, onChangeItemQuantity, onRemoveItem, isFetchingUserCart } = props;
     let cartJSX = null;
 
-    if (cartItems.length > 0) {
+    if (!isFetchingUserCart) {
+        cartJSX = <p>Loading your cart</p>
+    }
+    else if (cartItems.length > 0) {
         cartJSX = (
             <section className="cart-section">
                 <div className="cart-items">
@@ -42,8 +45,6 @@ const Cart = (props) => {
 
                 </div>
             </section>
-
-
         )
     } else {
         cartJSX = (
@@ -69,7 +70,7 @@ const mapStateToProps = state => {
     return {
         cartItems: state.cart.cart,
         totalPrice: state.cart.totalPrice,
-        loadedCart: state.cart.loadedCart
+        isFetchingUserCart: state.cart.loadedCart
     }
 }
 const mapDispatchToProps = dispatch => {
