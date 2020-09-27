@@ -18,7 +18,7 @@ const Index = ({ data, error }) => {
         <BusinessMsg />
         <Categories categories={data.categories} />
         <Products products={data.products} />
-        <Contact />
+        <Contact bgImg={data.homePage.BannerImage.formats.medium.url} />
       </div>
     </Layout>
 
