@@ -3,7 +3,7 @@ const ContactBoxs = (props) => {
         <section className="section-padding">
             <div className="contact-boxs">
                 <ContactBox
-                    bgImg={'/images/couple-walking.jpg'}
+                    bgImg={props.bgImg}
                     styleClass="store-location">
                     <h3>Visit Us</h3>
                     <ul className="contact-box-location-list">
@@ -15,7 +15,7 @@ const ContactBoxs = (props) => {
                 </ContactBox>
 
                 <ContactBox
-                    bgImg={'/images/couple-walking.jpg'}
+                    bgImg={props.bgImg}
                     styleClass="store-media">
                     <h3 className="contact-box-title">Follow Our Store Instagram</h3>
                     <a className="contact-box-link" href="#">@covidscape</a>

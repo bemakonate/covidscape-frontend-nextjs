@@ -2,16 +2,16 @@ import Layout from '../components/layout/layout';
 import Link from '../components/basic/NextLink/NextLink';
 import { Categories } from '../components/layout/home';
 
-import { useQuery } from '@apollo/react-hooks';
 import { withApollo } from '../graphql/apollo';
 import { CATEGORIES_QUERY } from '../graphql/queries';
+import initApolloFetch from '../constants/initApolloFetch';
 
 
 
-const CategoriesPage = (props) => {
-    const { data, loading, error } = useQuery(CATEGORIES_QUERY);
+const CategoriesPage = ({ data, error }) => {
+    // const { data, loading, error } = useQuery(CATEGORIES_QUERY);
 
-    if (loading) return <p>Loading...</p>;
+    // if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
     const categories = data.categories;
 
@@ -36,6 +36,12 @@ const CategoriesPage = (props) => {
     )
 
 
+}
+
+
+CategoriesPage.getInitialProps = async ctx => {
+    const res = await initApolloFetch(ctx, { query: CATEGORIES_QUERY });
+    return res;
 }
 
 export default withApollo(CategoriesPage);
