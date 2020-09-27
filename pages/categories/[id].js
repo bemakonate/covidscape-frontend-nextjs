@@ -1,39 +1,26 @@
 
-import React, { useState } from 'react'
+import React from 'react'
 import Layout from '../../components/layout/layout';
 import { Products } from '../../components/layout/home';
 import Link from '../../components/basic/NextLink/NextLink';
 import BackgroundImage from '../../components/basic/BackgroundImage/BackgroundImage';
 import { BsArrowLeft } from 'react-icons/bs';
-import { useRouter } from 'next/router'
+import initApolloFetch from '../../constants/initApolloFetch';
 
-
-import { useQuery } from '@apollo/react-hooks';
 import { withApollo } from '../../graphql/apollo';
 import { SINGLE_CATEGORY_QUERY } from '../../graphql/queries';
 
 
-const AllProducts = (props) => {
+const SingleCategory = ({ data, error, ...props }) => {
 
-    const [categoriesDropdown, setCategoriesDropdown] = useState(false);
-
-    const router = useRouter()
-    const { data, loading, error } = useQuery(SINGLE_CATEGORY_QUERY, {
-        variables: { id: router.query.id },
-    });
-
-    if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
-
 
     const products = data.category.products;
     const category = data.category;
 
-
-
     return (
         <Layout>
-            <header className={`header-height ${categoriesDropdown ? 'categories-dropdown' : null}`}>
+            <header className={`header-height`}>
                 <BackgroundImage
                     image={category.image.url}
                     compClass='shop__jumbotron'>
@@ -56,7 +43,6 @@ const AllProducts = (props) => {
             <section className="section-padding">
                 <div className="container">
                     <div className="shop__content">
-                        {/* <button>Open filter sidebar</button> */}
                         <Products products={products} />
                     </div>
 
@@ -69,7 +55,11 @@ const AllProducts = (props) => {
     )
 }
 
+SingleCategory.getInitialProps = async ctx => {
+    const id = ctx.query.id;
+    const res = await initApolloFetch(ctx, { query: SINGLE_CATEGORY_QUERY, variables: { id } });
+    return res;
+}
 
-
-export default withApollo(AllProducts);
+export default withApollo(SingleCategory);
 

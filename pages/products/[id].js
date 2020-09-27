@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useRouter } from 'next/router'
+import initApolloFetch from '../../constants/initApolloFetch';
 
 
 import * as actions from '../../store/cart/actions';
@@ -9,12 +9,10 @@ import AspectRatio from '../../components/basic/aspectRatio/aspectRatio';
 import ItemQuantity from '../../components/reusable/itemQuantity';
 import { FiCheckCircle } from 'react-icons/fi';
 
-import { useQuery } from '@apollo/react-hooks';
 import { withApollo } from '../../graphql/apollo';
 import { SINGLE_PRODUCT_QUERY } from '../../graphql/queries';
 
-const Product = ({ ...props }) => {
-    const router = useRouter()
+const Product = ({ data, error, ...props }) => {
     const [itemQuantity, setItemQuantity] = useState(1);
     const [addingToCart, setAddingToCart] = useState(false);
     const [cartText, setCartText] = useState(null);
@@ -31,11 +29,6 @@ const Product = ({ ...props }) => {
     }, [addingToCart]);
 
 
-    const { data, loading, error } = useQuery(SINGLE_PRODUCT_QUERY, {
-        variables: { id: router.query.id },
-    });
-
-    if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
 
     const product = data.product;
@@ -51,7 +44,7 @@ const Product = ({ ...props }) => {
         setTimeout(() => setAddingToCart(false), 2000)
     };
 
-    const renderResults = () => (
+    return (
         <Layout>
             <main className="product-page">
                 <div className="product-page-container">
@@ -87,10 +80,14 @@ const Product = ({ ...props }) => {
 
         </Layout>
     )
-
-    const results = renderResults();
-    return results;
 }
+
+Product.getInitialProps = async ctx => {
+    const id = ctx.query.id;
+    const res = await initApolloFetch(ctx, { query: SINGLE_PRODUCT_QUERY, variables: { id } });
+    return res;
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         onAddToCart: (item, quantity) => dispatch(actions.addToCart(item, quantity)),

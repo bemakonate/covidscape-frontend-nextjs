@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Layout from '../components/layout/layout';
+import initApolloFetch from '../constants/initApolloFetch';
 
 import BackgroundImage from '../components/basic/BackgroundImage/BackgroundImage';
 import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
@@ -12,14 +13,10 @@ import { useQuery } from '@apollo/react-hooks';
 import { withApollo } from '../graphql/apollo';
 import { PRODUCTS_AND_CATEGORIES_QUERY } from '../graphql/queries';
 
-const AllProducts = () => {
+const AllProducts = ({ data, error }) => {
 
     const [categoriesDropdown, setCategoriesDropdown] = useState(false);
 
-
-    const { data, loading, error } = useQuery(PRODUCTS_AND_CATEGORIES_QUERY);
-
-    if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error.message}</p>;
 
     const allProducts = data.products;
@@ -82,6 +79,12 @@ const AllProducts = () => {
 
         </Layout>
     )
+}
+
+
+AllProducts.getInitialProps = async ctx => {
+    const res = await initApolloFetch(ctx, { query: PRODUCTS_AND_CATEGORIES_QUERY });
+    return res;
 }
 
 export default withApollo(AllProducts);
