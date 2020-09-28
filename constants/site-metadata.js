@@ -3,5 +3,5 @@ export default {
     siteTitle: 'Covidscape',
     twitterUsername: "covidscape-store",
     siteDesc: 'All of your covid-19 proection in one store',
-    image: '/twitter-img.png'
+    image: '/images/twitter-img.png'
 }
