@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-const NextLink = ({ className, children, ariaLabel, ...props }) => {
+const NextLink = ({ children, href, as, ...props }) => {
     return (
-        <Link {...props}><a className={className} aria-label={ariaLabel}>{children}</a></Link>
+        <Link href={href} as={as}><a {...props}>{children}</a></Link>
     )
 }
 

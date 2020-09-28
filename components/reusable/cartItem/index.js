@@ -35,7 +35,7 @@ const CartItem = ({ quantity = 1, price, image, title, id, slug, ...props }) => 
 
             <div className={classes.ItemContent}>
                 <div>
-                    <Link href={!props.fixed ? slug : '#'}><a className={classes.Title}>{title || 'Product Title'}</a></Link>
+                    <Link href={!props.fixed ? slug : '#'} className={classes.Title}>{title || 'Product Title'}</Link>
                     {!props.fixed ? <ItemQuantity num={quantity} getQuantity={setItemQuantity} /> : null}
                     {props.fixed ? (
                         <React.Fragment>
