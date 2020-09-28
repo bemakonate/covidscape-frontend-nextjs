@@ -1,6 +1,6 @@
 import React from 'react'
 import NavLinks from './navLinks';
-import Link from 'next/link';
+import Link from '../../basic/NextLink/NextLink';
 import { connect } from 'react-redux';
 
 //Icons
@@ -23,7 +23,7 @@ const navigation = (props) => {
                     styleClass="nav-links"
                     navLinkClass="nav-link" />
             </div>
-            <Link href="/" ><a className="nav__brand"><RiSurgicalMaskLine /></a></Link>
+            <Link href="/" className="nav__brand" ariaLabel="home link"><RiSurgicalMaskLine /></Link>
 
             <div className="nav__user-section">
                 <GrSearch className="nav__search-icon" />

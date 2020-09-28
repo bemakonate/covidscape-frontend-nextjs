@@ -3,6 +3,7 @@
 .CartItem {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    align-items: flex-start;
     grid-gap: 10px;
     margin-bottom: 40px;
     position: relative;

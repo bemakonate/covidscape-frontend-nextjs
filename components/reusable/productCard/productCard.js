@@ -35,9 +35,13 @@ const productCard = ({ image, type = 'product', ...props }) => {
         default:
             productBtns = (
                 <div className={classes.ProductBtns}>
-                    <button className={classes.ProductBtn}><Link href={props.link} as={props.as}><FiInfo /></Link></button>
-                    <button className={classes.ProductBtn} onClick={props.cartBtnClicked}><RiShoppingCart2Line /></button>
-                    <button className={classes.ProductBtn}><BsHeart /></button>
+                    <button className={classes.ProductBtn} aria-label="product link">
+                        <Link href={props.link} as={props.as}><FiInfo /></Link>
+                    </button>
+                    <button className={classes.ProductBtn} onClick={props.cartBtnClicked} aria-label="Add to Cart">
+                        <RiShoppingCart2Line />
+                    </button>
+                    <button className={classes.ProductBtn} aria-label="Like Product"><BsHeart /></button>
                 </div >
             )
             const productInfo = (
@@ -57,8 +61,7 @@ const productCard = ({ image, type = 'product', ...props }) => {
             <AspectRatio height="133%" styleClass={props.imgContainerStyle}>
                 <Link href={props.link} as={props.as}>
                     <a className={classes.ProductImgLink}>
-                        {/* <img src={image.formats.medium.url} className={imgClasses} /> */}
-                        <Image cloudName="dqhul90vx" publicId={image.formats.small.provider_metadata.public_id} className={imgClasses} format="webp" secure="true" />
+                        <Image cloudName="dqhul90vx" publicId={image.formats.small.provider_metadata.public_id} className={imgClasses} format="webp" secure="true" alt={props.title} />
                         <div className={`${classes.ProductOverlay} ${props.overlayStyle ? props.overlayStyle : null}`}></div>
                     </a>
                 </Link>

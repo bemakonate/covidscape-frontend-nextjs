@@ -35,7 +35,7 @@ const CartSidebar = (props) => {
                             image={item.details.image.formats.thumbnail.url}
                             price={item.details.price}
                             title={item.details.title}
-                            slug={`/products/${item.details.slug}`}
+                            slug={`/products/${item.details.id}`}
                             quantity={item.quantity}
                             removeItem={props.removeItem}
                             changeItemQuantity={props.changeItemQuantity} />

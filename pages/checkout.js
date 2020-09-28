@@ -14,6 +14,7 @@ import OnlinePayment from '../components/layout/checkout/online-payment';
 import ContactForm from '../components/layout/checkout/contactForm';
 import LoadingBackdrop from '../components/reusable/loadingBackdrop';
 import AddressModal from '../components/layout/checkout/address-modal';
+import SEO from '../components/reusable/SEO';
 
 
 const Checkout = (props) => {
@@ -175,6 +176,7 @@ const Checkout = (props) => {
 
     return (
         <Layout addPadding>
+            <SEO title="Checkout" />
             <LoadingBackdrop show={loading} />
             <AddressModal
                 show={showAddressModal}

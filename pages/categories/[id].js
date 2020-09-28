@@ -6,6 +6,7 @@ import Link from '../../components/basic/NextLink/NextLink';
 import BackgroundImage from '../../components/basic/BackgroundImage/BackgroundImage';
 import { BsArrowLeft } from 'react-icons/bs';
 import initApolloFetch from '../../constants/initApolloFetch';
+import SEO from '../../components/reusable/SEO';
 
 import { withApollo } from '../../graphql/apollo';
 import { SINGLE_CATEGORY_QUERY } from '../../graphql/queries';
@@ -20,6 +21,7 @@ const SingleCategory = ({ data, error, ...props }) => {
 
     return (
         <Layout>
+            <SEO title={category.name} />
             <header className={`header-height`}>
                 <BackgroundImage
                     image={category.image.url}

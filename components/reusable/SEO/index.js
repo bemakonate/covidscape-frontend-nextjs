@@ -1,41 +1,38 @@
-import React from 'react';
-import { useStaticQuery, graphql } from "gatsby";
-import { Helmet } from 'react-helmet';
+// import React from 'react';
 
-const query = graphql`
-{
-  site {
-    siteMetadata {
-      siteTitle
-      siteDesc
-      backendUrl
-      siteUrl
-      image
-      twitterUsername
-    }
-  }
-}
-`
+
+// const SEO = ({ title, description }) => {
+//     const { site: { siteMetadata } } = useStaticQuery(query);
+//     const { siteTitle, siteDesc, siteUrl, image, twitterUsername } = siteMetadata;
+//     return (
+//         <Helmet title={`${title} | ${siteTitle}`} htmlAttributes={{ lang: "en" }}>
+//             <meta name="description" content={description || siteDesc} />
+//             <meta name="image" content={image} />
+
+
+
+//         </Helmet>
+//     );
+// }
+
+
+
+// export default SEO
+
+
+import Head from 'next/head';
+import siteMetadata from '../../../constants/site-metadata';
 
 const SEO = ({ title, description }) => {
-    const { site: { siteMetadata } } = useStaticQuery(query);
-    const { siteTitle, siteDesc, siteUrl, image, twitterUsername } = siteMetadata;
-    return (
-        <Helmet title={`${title} | ${siteTitle}`} htmlAttributes={{ lang: "en" }}>
-            <meta name="description" content={description || siteDesc} />
-            <meta name="image" content={image} />
+  const { siteTitle, siteDesc } = siteMetadata;
+  return (
+    <Head>
+      <title> {title} | {siteTitle}</title>
+      <meta name="description" content={description || siteDesc} />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </Head>
 
-            {/*Twitter Card */}
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:creator" content={twitterUsername} />
-            <meta name="twitter:title" content={siteTitle} />
-            <meta name="twitter:description" content={siteDesc} />
-            <meta name="twitter:image" content={`${siteUrl}${image}`} />
-
-        </Helmet>
-    );
+  )
 }
 
-
-
-export default SEO
+export default SEO;
