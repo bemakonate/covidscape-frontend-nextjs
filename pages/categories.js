@@ -5,6 +5,7 @@ import { Categories } from '../components/layout/home';
 import { withApollo } from '../graphql/apollo';
 import { CATEGORIES_QUERY } from '../graphql/queries';
 import initApolloFetch from '../constants/initApolloFetch';
+import SEO from '../components/reusable/SEO';
 
 
 
@@ -17,6 +18,7 @@ const CategoriesPage = ({ data, error }) => {
 
     return (
         <Layout>
+            <SEO title="Categories" />
 
             <header className="categories__jumbotron">
                 <div className="categories__jumbotron-container">

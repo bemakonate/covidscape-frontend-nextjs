@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import * as actions from '../store/cart/actions';
 import Dollar from '../components/reusable/dollar';
 import { cartSubtotal } from '../constants/helpers/cart-helpers';
+import SEO from '../components/reusable/SEO';
 
 const Cart = (props) => {
     const { cartItems, onChangeItemQuantity, onRemoveItem, isFetchingUserCart } = props;
@@ -55,6 +56,7 @@ const Cart = (props) => {
     }
     return (
         <Layout addPadding>
+            <SEO title="Cart" />
             <header className="cart-header">
                 <h2 className="cart-header__title">Cart</h2>
                 <p className="cart-header__tagline">View the items you saved to your cart</p>

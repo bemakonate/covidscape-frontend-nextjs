@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import initApolloFetch from '../../constants/initApolloFetch';
+import SEO from '../../components/reusable/SEO';
 
 
 import * as actions from '../../store/cart/actions';
@@ -46,6 +47,7 @@ const Product = ({ data, error, ...props }) => {
 
     return (
         <Layout>
+            <SEO title={title} />
             <main className="product-page">
                 <div className="product-page-container">
                     <div className="product-info">

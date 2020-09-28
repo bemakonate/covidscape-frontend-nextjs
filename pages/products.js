@@ -9,7 +9,7 @@ import { CgMore } from 'react-icons/cg';
 import Link from '../components/basic/NextLink/NextLink';
 import { Products } from '../components/layout/home';
 
-import { useQuery } from '@apollo/react-hooks';
+import SEO from '../components/reusable/SEO';
 import { withApollo } from '../graphql/apollo';
 import { PRODUCTS_AND_CATEGORIES_QUERY } from '../graphql/queries';
 
@@ -27,7 +27,7 @@ const AllProducts = ({ data, error }) => {
 
     return (
         <Layout>
-            {/* <SEO title="Shop" /> */}
+            <SEO title="Shop" />
             <header className={`header-height ${categoriesDropdown ? 'categories-dropdown' : null}`}>
                 <BackgroundImage
                     image="/images/washing-hands.jpeg"

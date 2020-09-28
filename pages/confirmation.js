@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Link from '../components/basic/NextLink/NextLink';
 import CartItem from '../components/reusable/cartItem';
 import Dollar from '../components/reusable/dollar';
+import SEO from '../components/reusable/SEO';
 
 const Confirmation = (props) => {
     const { orderData, orderCart } = props;
@@ -112,6 +113,7 @@ const Confirmation = (props) => {
 
     return (
         <Layout addPadding>
+            <SEO title="Confirmation" />
             <div className="confirmation-page">
                 {pageJSX}
             </div>

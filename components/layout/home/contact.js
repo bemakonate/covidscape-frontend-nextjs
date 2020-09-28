@@ -4,6 +4,7 @@ const ContactBoxs = (props) => {
             <div className="contact-boxs">
                 <ContactBox
                     bgImg={props.bgImg}
+                    bgImgAlt={props.bgImgAlt}
                     styleClass="store-location">
                     <h3>Visit Us</h3>
                     <ul className="contact-box-location-list">
@@ -16,6 +17,7 @@ const ContactBoxs = (props) => {
 
                 <ContactBox
                     bgImg={props.bgImg}
+                    bgImgAlt={props.bgImgAlt}
                     styleClass="store-media">
                     <h3 className="contact-box-title">Follow Our Store Instagram</h3>
                     <a className="contact-box-link" href="#">@covidscape</a>
@@ -30,7 +32,7 @@ const ContactBox = (props) => {
         <div className={`contact-box ${props.styleClass}`}>
             <div className="contact-box-container">
                 <div className={`contact-box-overlay ${props.overlayClass}`}></div>
-                <img src={props.bgImg} className="contact-box-img" />
+                <img src={props.bgImg} className="contact-box-img" alt={props.bgImgAlt} />
                 <div className="contact-box-content">
                     {props.children}
                 </div>
