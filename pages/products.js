@@ -51,7 +51,7 @@ const AllProducts = ({ data, error }) => {
                             {categoriesDropdown && <ul className="shop__jumbotron-categories-list">
                                 {categories.map(category =>
                                     <li key={category.id}>
-                                        <Link className="shop__jumbotron-categories-item" href={`/categories/${category.slug}`}>
+                                        <Link className="shop__jumbotron-categories-item" href={`/categories/${category.id}`}>
                                             {category.name}
                                         </Link>
                                     </li>

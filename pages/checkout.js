@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Layout from '../components/layout/layout';
-import axios from '../constants/axios-backend'; //* 
+import axios from '../constants/axios-backend';
 import { connect } from 'react-redux';
 import * as actions from '../store/cart/actions';
 import { useRouter } from 'next/router'
@@ -50,9 +50,8 @@ const Checkout = (props) => {
 
     useEffect(() => {
         if (!cartItems.length) {
-            router.push({ pathname: '/cart', scrollreset: true })
+            router.push('/cart').then(() => window.scrollTo(0, 0));
         }
-
     }, [])
 
     useEffect(() => {
